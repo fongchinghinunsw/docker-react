@@ -1,0 +1,14 @@
+# we need superuser permissions every time using docker
+sudo: required
+# tell Travis to install the following services inside its running
+# container, e.g. docker CLI
+services:
+  - docker
+# commands to be run before the tests are run
+before_install:
+  - docker build -t stephenfong/dockerreact -f Dockerfile.dev .
+# commands to run the test suite
+script:
+  # CI=true to let `npm run test` exits automatically after all tests
+  # are run, instead of waiting for further user inputs
+  - docker run -e CI=true stephenfong/dockerreact npm run test
