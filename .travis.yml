@@ -26,6 +26,7 @@ deploy:
   on:
     # only deploy when there's new commit on the master branch
     branch: master
+  # access and secret key for a user of your AWS account
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
