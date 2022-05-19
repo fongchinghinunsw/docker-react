@@ -12,3 +12,20 @@ script:
   # set CI=true to let `npm run test` exits automatically after all tests
   # are run, instead of waiting for further user inputs
   - docker run -e CI=true stephenfong/dockerreact npm run test
+
+deploy:
+  # Dockerreact-env.eba-pz3bi7ec.ap-southeast-1.elasticbeanstalk.com
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "docker-react" # app name
+  env: "Dockerreact-env" # environment name
+  # the name of the bucket that Travis will push the zip of your
+  # production code to and ask EB to deploy it
+  bucket_name: "elasticbeanstalk-ap-southeast-1-731897626413"
+  bucket_path: "docker-react"
+  on:
+    # only deploy when there's new commit on the master branch
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
