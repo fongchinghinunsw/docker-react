@@ -3,13 +3,6 @@ import App from "./App";
 
 test("renders learn react link", () => {
   render(<App />);
-  const linkElement = screen.getByText("Pytho");
+  const linkElement = screen.getByText("Pythonic");
   expect(linkElement).toBeInTheDocument();
 });
-
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText("Pytho");
-  expect(linkElement).toBeInTheDocument();
-});
-
